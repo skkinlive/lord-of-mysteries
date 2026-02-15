@@ -1,0 +1,88 @@
+{
+  "LOM": {
+    "SheetClassCharacter": "캐릭터 시트",
+    "SheetClassItem": "아이템 시트",
+    
+    "Attributes": {
+      "Strength": "힘",
+      "Dexterity": "민첩",
+      "Willpower": "의지",
+      "Health": "건강",
+      "Charm": "매력",
+      "Inspiration": "영감",
+      "Luck": "행운",
+      "Education": "교육"
+    },
+    
+    "Stats": {
+      "Spirituality": "영성",
+      "Sanity": "이성",
+      "HP": "생명력",
+      "Movement": "이동",
+      "DefensePhysical": "물리 방어",
+      "DefenseWillpower": "의지 방어",
+      "DefenseHealth": "건강 방어"
+    },
+    
+    "SkillLevels": {
+      "Untrained": "훈련 안됨",
+      "Trained": "훈련됨",
+      "Skilled": "숙련됨",
+      "Advanced": "진척됨",
+      "Expert": "정통함",
+      "Master": "박학함",
+      "Grandmaster": "대가"
+    },
+    
+    "ActionTypes": {
+      "Attack": "공격",
+      "Cast": "시전",
+      "Move": "이동",
+      "Swift": "신속",
+      "Free": "자유"
+    },
+    
+    "ItemSizes": {
+      "Tiny": "매우 작은",
+      "Small": "작은",
+      "MediumSmall": "중소",
+      "Medium": "중간",
+      "MediumLarge": "중대",
+      "Large": "대형"
+    },
+    
+    "DamageTypes": {
+      "Physical": "물리 피해",
+      "Curse": "저주 피해",
+      "Fire": "화염 피해",
+      "Cold": "냉기 피해",
+      "Divine": "신성 피해",
+      "Lightning": "번개 피해",
+      "Poison": "독소 피해"
+    },
+    
+    "StatusEffects": {
+      "Unbalanced": "균형 잃음",
+      "Helpless": "무력함",
+      "Silenced": "침묵",
+      "Restrained": "속박",
+      "Injustice": "불의",
+      "Stunned": "기절",
+      "Blinded": "실명",
+      "Deafened": "청각 상실",
+      "Invisible": "투명화",
+      "Frightened": "공포",
+      "Enraged": "분노",
+      "BleedingSevere": "출혈 과다",
+      "Bleeding": "출혈",
+      "Dead": "사망"
+    },
+    
+    "Rolls": {
+      "Initiative": "우선권",
+      "Sanity": "이성 판정",
+      "SkillCheck": "기능 판정",
+      "AttributeCheck": "속성 판정"
+    }
+  }
+}
