@@ -48,19 +48,17 @@ Lord of Mysteries TRPG를 온라인에서 플레이하기 위한 Foundry VTT 시
 3. **Install System** 버튼 클릭
 4. 하단의 **Manifest URL** 입력란에 다음 URL 붙여넣기:
    ```
-   https://raw.githubusercontent.com/YOUR-USERNAME/lord-of-mysteries/main/system.json
+   https://raw.githubusercontent.com/skkinlive/lord-of-mysteries/main/system.json
    ```
 5. **Install** 클릭
 6. 월드 생성 시 "Lord of Mysteries" 선택
 
 ### 방법 2: 수동 설치
 
-1. [최신 릴리즈](https://github.com/YOUR-USERNAME/lord-of-mysteries/releases) 다운로드
+1. [최신 릴리즈](https://github.com/skkinlive/lord-of-mysteries/releases) 다운로드
 2. 압축 해제 후 `lord-of-mysteries` 폴더를 Foundry VTT의 `Data/systems/` 폴더에 복사
 3. Foundry VTT 재시작
 4. 월드 생성 시 "Lord of Mysteries" 선택
-
-> **참고**: 위의 `YOUR-USERNAME`을 실제 GitHub 사용자명으로 변경하세요.
 
 ## 사용 방법
 
