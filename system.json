@@ -25,7 +25,7 @@
   "gridUnits": "m",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "sanity",
-  "url": "https://github.com/YOUR-USERNAME/lord-of-mysteries",
-  "manifest": "https://raw.githubusercontent.com/YOUR-USERNAME/lord-of-mysteries/main/system.json",
-  "download": "https://github.com/YOUR-USERNAME/lord-of-mysteries/archive/refs/heads/main.zip"
+  "url": "https://github.com/skkinlive/lord-of-mysteries",
+"manifest": "https://raw.githubusercontent.com/skkinlive/lord-of-mysteries/main/system.json",
+"download": "https://github.com/skkinlive/lord-of-mysteries/archive/refs/heads/main.zip"
 }
