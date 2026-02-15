@@ -30,8 +30,8 @@ git add .
 # 첫 커밋
 git commit -m "Initial commit: Lord of Mysteries TRPG System v1.0.0"
 
-# GitHub 리포지토리 연결 (YOUR-USERNAME을 실제 사용자명으로 변경)
-git remote add origin https://github.com/YOUR-USERNAME/lord-of-mysteries.git
+# GitHub 리포지토리 연결 (skkinlive을 실제 사용자명으로 변경)
+git remote add origin https://github.com/skkinlive/lord-of-mysteries.git
 
 # main 브랜치로 변경 (필요시)
 git branch -M main
@@ -45,12 +45,12 @@ git push -u origin main
 업로드 후 `system.json` 파일을 열어 다음 URL들을 수정하세요:
 
 ```json
-"url": "https://github.com/YOUR-USERNAME/lord-of-mysteries",
-"manifest": "https://raw.githubusercontent.com/YOUR-USERNAME/lord-of-mysteries/main/system.json",
-"download": "https://github.com/YOUR-USERNAME/lord-of-mysteries/archive/refs/heads/main.zip"
+"url": "https://github.com/skkinlive/lord-of-mysteries",
+"manifest": "https://raw.githubusercontent.com/skkinlive/lord-of-mysteries/main/system.json",
+"download": "https://github.com/skkinlive/lord-of-mysteries/archive/refs/heads/main.zip"
 ```
 
-**YOUR-USERNAME**을 실제 GitHub 사용자명으로 변경한 후 다시 커밋:
+**skkinlive**을 실제 GitHub 사용자명으로 변경한 후 다시 커밋:
 
 ```bash
 git add system.json
@@ -65,7 +65,7 @@ git push
 3. **Install System** 버튼 클릭
 4. **Manifest URL**에 입력:
    ```
-   https://raw.githubusercontent.com/YOUR-USERNAME/lord-of-mysteries/main/system.json
+   https://raw.githubusercontent.com/skkinlive/lord-of-mysteries/main/system.json
    ```
 5. **Install** 클릭
 
@@ -85,7 +85,7 @@ GitHub에서 릴리즈를 생성하면 버전 관리가 쉬워집니다:
 릴리즈를 생성한 후 `system.json`의 `download` URL을 다음과 같이 변경할 수 있습니다:
 
 ```json
-"download": "https://github.com/YOUR-USERNAME/lord-of-mysteries/releases/download/v1.0.0/lord-of-mysteries.zip"
+"download": "https://github.com/skkinlive/lord-of-mysteries/releases/download/v1.0.0/lord-of-mysteries.zip"
 ```
 
 이 경우 릴리즈 페이지에서 `lord-of-mysteries.zip` 파일을 업로드해야 합니다.
