@@ -1,0 +1,31 @@
+{
+  "id": "lord-of-mysteries",
+  "title": "Lord of Mysteries",
+  "description": "Lord of Mysteries TRPG 시스템 - 서열과 속성 기반 판정 시스템",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "12"
+  },
+  "authors": [
+    {
+      "name": "Custom Developer"
+    }
+  ],
+  "esmodules": ["module/lord-of-mysteries.mjs"],
+  "styles": ["css/lord-of-mysteries.css"],
+  "languages": [
+    {
+      "lang": "ko",
+      "name": "한국어",
+      "path": "lang/ko.json"
+    }
+  ],
+  "gridDistance": 5,
+  "gridUnits": "m",
+  "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "sanity",
+  "url": "https://github.com/YOUR-USERNAME/lord-of-mysteries",
+  "manifest": "https://raw.githubusercontent.com/YOUR-USERNAME/lord-of-mysteries/main/system.json",
+  "download": "https://github.com/YOUR-USERNAME/lord-of-mysteries/archive/refs/heads/main.zip"
+}

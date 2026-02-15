@@ -1,0 +1,30 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="100" width="100"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="물품 이름"/></h1>
+    </div>
+  </header>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    
+    <div class="form-group">
+      <label>크기</label>
+      <select name="system.size">
+        {{#each itemSizes as |label size|}}
+        <option value="{{size}}" {{#if (eq ../system.size size)}}selected{{/if}}>{{label}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="form-group stacked">
+      <label>설명</label>
+      <textarea name="system.description" rows="12">{{system.description}}</textarea>
+    </div>
+
+  </section>
+
+</form>

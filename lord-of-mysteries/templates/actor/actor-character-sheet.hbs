@@ -1,0 +1,350 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+  
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <div class="header-fields">
+      <div class="profile-section">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+        <div class="info-grid">
+          <div class="form-group">
+            <label>이름</label>
+            <input name="system.info.name" type="text" value="{{system.info.name}}" placeholder="이름"/>
+          </div>
+          <div class="form-group">
+            <label>가문</label>
+            <input name="system.info.family" type="text" value="{{system.info.family}}" placeholder="가문"/>
+          </div>
+          <div class="form-group">
+            <label>성별</label>
+            <input name="system.info.gender" type="text" value="{{system.info.gender}}" placeholder="성별"/>
+          </div>
+          <div class="form-group">
+            <label>연령</label>
+            <input name="system.info.age" type="text" value="{{system.info.age}}" placeholder="연령"/>
+          </div>
+          <div class="form-group">
+            <label>신장</label>
+            <input name="system.info.height" type="text" value="{{system.info.height}}" placeholder="신장"/>
+          </div>
+          <div class="form-group">
+            <label>체중</label>
+            <input name="system.info.weight" type="text" value="{{system.info.weight}}" placeholder="체중"/>
+          </div>
+          <div class="form-group">
+            <label>직업</label>
+            <input name="system.info.occupation" type="text" value="{{system.info.occupation}}" placeholder="직업"/>
+          </div>
+          <div class="form-group">
+            <label>종족</label>
+            <input name="system.info.race" type="text" value="{{system.info.race}}" placeholder="종족"/>
+          </div>
+          <div class="form-group">
+            <label>초월 경로</label>
+            <input name="system.info.transcendentPath" type="text" value="{{system.info.transcendentPath}}" placeholder="초월 경로"/>
+          </div>
+          <div class="form-group">
+            <label>현재 서열</label>
+            <select name="system.info.currentRank">
+              {{#each ranks as |label key|}}
+              <option value="{{key}}" {{#if (eq ../system.info.currentRank key)}}selected{{/if}}>{{label}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class="form-group">
+            <label>힘 피해 가산치</label>
+            <input name="system.info.strengthDamageBonus" type="number" value="{{system.info.strengthDamageBonus}}" placeholder="0"/>
+          </div>
+          <div class="form-group">
+            <label>위계</label>
+            <input name="system.info.hierarchy" type="text" value="{{system.info.hierarchy}}" placeholder="위계"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Stats Bar --}}
+  <div class="stats-bar">
+    <div class="stat-box">
+      <label>영성</label>
+      <div class="resource">
+        <input name="system.stats.spirituality.value" type="number" value="{{system.stats.spirituality.value}}" placeholder="0"/>
+        <span class="sep">/</span>
+        <input name="system.stats.spirituality.max" type="number" value="{{system.stats.spirituality.max}}" placeholder="0"/>
+      </div>
+    </div>
+    
+    <div class="stat-box">
+      <label>이성</label>
+      <div class="resource">
+        <input name="system.stats.sanity.value" type="number" value="{{system.stats.sanity.value}}" placeholder="0"/>
+        <span class="sep">/</span>
+        <input name="system.stats.sanity.max" type="number" value="{{system.stats.sanity.max}}" placeholder="0"/>
+      </div>
+      <button type="button" class="sanity-roll" title="이성 판정">
+        <i class="fas fa-dice-d20"></i>
+      </button>
+    </div>
+    
+    <div class="stat-box">
+      <label>생명력</label>
+      <div class="resource">
+        <input name="system.stats.hp.value" type="number" value="{{system.stats.hp.value}}" placeholder="0"/>
+        <span class="sep">/</span>
+        <input name="system.stats.hp.max" type="number" value="{{system.stats.hp.max}}" placeholder="0"/>
+      </div>
+    </div>
+    
+    <div class="stat-box">
+      <label>이동</label>
+      <div class="stat-value">{{system.stats.movement.value}}</div>
+    </div>
+    
+    <div class="stat-box defense-group">
+      <label>방어</label>
+      <div class="defense-values">
+        <div class="defense-item">
+          <span class="defense-label">물리</span>
+          <span class="defense-value">{{system.stats.defensePhysical.value}}</span>
+        </div>
+        <div class="defense-item">
+          <span class="defense-label">의지</span>
+          <span class="defense-value">{{system.stats.defenseWillpower.value}}</span>
+        </div>
+        <div class="defense-item">
+          <span class="defense-label">건강</span>
+          <span class="defense-value">{{system.stats.defenseHealth.value}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="main">메인</a>
+    <a class="item" data-tab="actions">행동</a>
+    <a class="item" data-tab="abilities">능력</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    
+    {{!-- Main Tab --}}
+    <div class="tab main" data-group="primary" data-tab="main">
+      
+      <div class="main-content">
+        
+        {{!-- Attributes Section --}}
+        <div class="attributes-section">
+          <h3 class="section-title">속성</h3>
+          <div class="attributes-grid">
+            {{#each system.attributes as |attr key|}}
+            <div class="attribute-box">
+              <div class="attribute-header">
+                <label class="attribute-name">{{lookup ../attributeNames key}}</label>
+                <button type="button" class="attribute-roll rollable" data-attribute="{{key}}" data-label="{{lookup ../attributeNames key}}" title="{{lookup ../attributeNames key}} 판정">
+                  <i class="fas fa-dice-d20"></i>
+                </button>
+              </div>
+              <div class="attribute-values">
+                <div class="attribute-value-group">
+                  <label>현재</label>
+                  <input name="system.attributes.{{key}}.value" type="number" value="{{attr.value}}" placeholder="0"/>
+                </div>
+                <div class="attribute-value-group">
+                  <label>초기</label>
+                  <input name="system.attributes.{{key}}.initial" type="number" value="{{attr.initial}}" placeholder="0"/>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+          
+          <div class="initiative-section">
+            <button type="button" class="initiative-roll" title="우선권 굴림">
+              <i class="fas fa-fist-raised"></i> 우선권 굴림 (1d20 + 민첩)
+            </button>
+          </div>
+        </div>
+
+        {{!-- Skills Section --}}
+        <div class="skills-section">
+          <h3 class="section-title">기능</h3>
+          
+          {{#each system.skills as |attrSkills attrKey|}}
+          <div class="skill-group">
+            <h4 class="skill-group-title">{{lookup ../attributeNames attrKey}} 영향 기능</h4>
+            <div class="skills-list">
+              {{#each attrSkills as |skill skillKey|}}
+              <div class="skill-row">
+                <div class="skill-info">
+                  {{#if (eq skillKey "melee1")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="격투 (이름 입력)"/>
+                  {{else if (eq skillKey "melee2")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="격투 (이름 입력)"/>
+                  {{else if (eq skillKey "ranged1")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="사격 (이름 입력)"/>
+                  {{else if (eq skillKey "ranged2")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="사격 (이름 입력)"/>
+                  {{else if (eq skillKey "ranged3")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="사격 (이름 입력)"/>
+                  {{else if (eq skillKey "art1")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="예술 (이름 입력)"/>
+                  {{else if (eq skillKey "art2")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="예술 (이름 입력)"/>
+                  {{else if (eq skillKey "art3")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="예술 (이름 입력)"/>
+                  {{else if (eq skillKey "scholarship1")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="학식 (이름 입력)"/>
+                  {{else if (eq skillKey "scholarship2")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="학식 (이름 입력)"/>
+                  {{else if (eq skillKey "scholarship3")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="학식 (이름 입력)"/>
+                  {{else if (eq skillKey "scholarship4")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="학식 (이름 입력)"/>
+                  {{else if (eq skillKey "scholarship5")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="학식 (이름 입력)"/>
+                  {{else if (eq skillKey "scholarship6")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="학식 (이름 입력)"/>
+                  {{else if (eq skillKey "occultLanguage1")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="신비학 언어 (이름)"/>
+                  {{else if (eq skillKey "occultLanguage2")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="신비학 언어 (이름)"/>
+                  {{else if (eq skillKey "occultLanguage3")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="신비학 언어 (이름)"/>
+                  {{else if (eq skillKey "occultLanguage4")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="신비학 언어 (이름)"/>
+                  {{else if (eq skillKey "commonLanguage1")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="상용어 (이름 입력)"/>
+                  {{else if (eq skillKey "commonLanguage2")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="상용어 (이름 입력)"/>
+                  {{else if (eq skillKey "commonLanguage3")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="상용어 (이름 입력)"/>
+                  {{else if (eq skillKey "commonLanguage4")}}
+                  <input class="skill-custom-name" name="system.skills.{{attrKey}}.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="상용어 (이름 입력)"/>
+                  {{else}}
+                  <label class="skill-name">{{lookup ../../skillNames.[attrKey].[skillKey]}}</label>
+                  {{/if}}
+                </div>
+                <select class="skill-level" name="system.skills.{{attrKey}}.{{skillKey}}.level">
+                  {{#each ../../skillLevels as |label level|}}
+                  <option value="{{level}}" {{#if (eq ../skill.level level)}}selected{{/if}}>{{label}}</option>
+                  {{/each}}
+                </select>
+                <div class="skill-bonus">{{skillBonus skill.level}}</div>
+                <button type="button" class="skill-roll rollable" data-attribute="{{attrKey}}" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../../skillNames.[attrKey].[skillKey]}}{{/if}}" title="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../../skillNames.[attrKey].[skillKey]}}{{/if}} 판정">
+                  <i class="fas fa-dice-d20"></i>
+                </button>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          {{/each}}
+        </div>
+
+        {{!-- Items Section --}}
+        <div class="items-section">
+          <h3 class="section-title">
+            휴대 가능 물품
+            <button type="button" class="item-create" data-type="item" title="물품 추가">
+              <i class="fas fa-plus"></i> 추가
+            </button>
+          </h3>
+          <ol class="items-list">
+            <li class="item flexrow item-header">
+              <div class="item-name">이름</div>
+              <div class="item-size">크기</div>
+              <div class="item-controls">
+                <div class="item-control">편집</div>
+                <div class="item-control">삭제</div>
+              </div>
+            </li>
+            {{#each items as |item id|}}
+            <li class="item flexrow" data-item-id="{{item._id}}">
+              <div class="item-name">
+                <h4>{{item.name}}</h4>
+              </div>
+              <div class="item-size">{{lookup ../itemSizes item.system.size}}</div>
+              <div class="item-controls">
+                <a class="item-control item-edit" title="편집"><i class="fas fa-edit"></i></a>
+                <a class="item-control item-delete" title="삭제"><i class="fas fa-trash"></i></a>
+              </div>
+            </li>
+            {{/each}}
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    {{!-- Actions Tab --}}
+    <div class="tab actions" data-group="primary" data-tab="actions">
+      <h3 class="section-title">
+        행동
+        <button type="button" class="item-create" data-type="action" title="행동 추가">
+          <i class="fas fa-plus"></i> 행동 추가
+        </button>
+      </h3>
+      <ol class="items-list">
+        <li class="item flexrow item-header">
+          <div class="item-name">이름</div>
+          <div class="item-action-type">종류</div>
+          <div class="item-controls">
+            <div class="item-control">사용</div>
+            <div class="item-control">편집</div>
+            <div class="item-control">삭제</div>
+          </div>
+        </li>
+        {{#each actions as |item id|}}
+        <li class="item flexrow" data-item-id="{{item._id}}">
+          <div class="item-name">
+            <h4>{{item.name}}</h4>
+            <div class="item-description">{{item.system.description}}</div>
+          </div>
+          <div class="item-action-type">{{lookup ../actionTypes item.system.actionType}}</div>
+          <div class="item-controls">
+            <a class="item-control item-roll" title="사용"><i class="fas fa-dice-d20"></i></a>
+            <a class="item-control item-edit" title="편집"><i class="fas fa-edit"></i></a>
+            <a class="item-control item-delete" title="삭제"><i class="fas fa-trash"></i></a>
+          </div>
+        </li>
+        {{/each}}
+      </ol>
+    </div>
+
+    {{!-- Abilities Tab --}}
+    <div class="tab abilities" data-group="primary" data-tab="abilities">
+      <h3 class="section-title">
+        초월 능력
+        <button type="button" class="item-create" data-type="ability" title="능력 추가">
+          <i class="fas fa-plus"></i> 능력 추가
+        </button>
+      </h3>
+      <ol class="items-list">
+        <li class="item flexrow item-header">
+          <div class="item-name">이름</div>
+          <div class="item-cost">비용</div>
+          <div class="item-controls">
+            <div class="item-control">사용</div>
+            <div class="item-control">편집</div>
+            <div class="item-control">삭제</div>
+          </div>
+        </li>
+        {{#each abilities as |item id|}}
+        <li class="item flexrow" data-item-id="{{item._id}}">
+          <div class="item-name">
+            <h4>{{item.name}}</h4>
+            <div class="item-description">{{item.system.description}}</div>
+          </div>
+          <div class="item-cost">{{item.system.cost}}</div>
+          <div class="item-controls">
+            <a class="item-control item-roll" title="사용"><i class="fas fa-hand-sparkles"></i></a>
+            <a class="item-control item-edit" title="편집"><i class="fas fa-edit"></i></a>
+            <a class="item-control item-delete" title="삭제"><i class="fas fa-trash"></i></a>
+          </div>
+        </li>
+        {{/each}}
+      </ol>
+    </div>
+
+  </section>
+</form>
