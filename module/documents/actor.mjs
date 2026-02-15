@@ -102,11 +102,23 @@ export class LordOfMysteriesActor extends Actor {
   /**
    * 기능 판정 굴림
    */
-  async rollSkill(attribute, skillKey, skillName) {
+  async rollSkill(attribute, skillKey, skillName, advantage = false, disadvantage = false) {
     const bonus = this._getSkillBonus(attribute, skillKey);
     const attrValue = this.system.attributes[attribute]?.value || 0;
     
-    const roll = new Roll("1d20 + @bonus + @attr", { 
+    let rollFormula = "1d20 + @bonus + @attr";
+    let flavorText = `${skillName} 판정`;
+    
+    // 유리점 또는 불리점 처리
+    if (advantage && !disadvantage) {
+      rollFormula = "2d20kh + @bonus + @attr"; // Keep Highest
+      flavorText += " (유리점)";
+    } else if (disadvantage && !advantage) {
+      rollFormula = "2d20kl + @bonus + @attr"; // Keep Lowest
+      flavorText += " (불리점)";
+    }
+    
+    const roll = new Roll(rollFormula, { 
       bonus: bonus,
       attr: attrValue
     });
@@ -115,7 +127,7 @@ export class LordOfMysteriesActor extends Actor {
     const speaker = ChatMessage.getSpeaker({ actor: this });
     roll.toMessage({
       speaker: speaker,
-      flavor: `${skillName} 판정 (난이도와 비교)`
+      flavor: `${flavorText} (난이도와 비교)`
     });
 
     return roll.total;
@@ -143,16 +155,28 @@ export class LordOfMysteriesActor extends Actor {
   /**
    * 속성 판정 굴림
    */
-  async rollAttribute(attributeKey, attributeName) {
+  async rollAttribute(attributeKey, attributeName, advantage = false, disadvantage = false) {
     const attrValue = this.system.attributes[attributeKey]?.value || 0;
     
-    const roll = new Roll("1d20 + @attr", { attr: attrValue });
+    let rollFormula = "1d20 + @attr";
+    let flavorText = `${attributeName} 판정`;
+    
+    // 유리점 또는 불리점 처리
+    if (advantage && !disadvantage) {
+      rollFormula = "2d20kh + @attr"; // Keep Highest
+      flavorText += " (유리점)";
+    } else if (disadvantage && !advantage) {
+      rollFormula = "2d20kl + @attr"; // Keep Lowest
+      flavorText += " (불리점)";
+    }
+    
+    const roll = new Roll(rollFormula, { attr: attrValue });
     await roll.evaluate();
     
     const speaker = ChatMessage.getSpeaker({ actor: this });
     roll.toMessage({
       speaker: speaker,
-      flavor: `${attributeName} 판정 (난이도와 비교)`
+      flavor: `${flavorText} (난이도와 비교)`
     });
 
     return roll.total;

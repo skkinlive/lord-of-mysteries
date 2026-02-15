@@ -1,170 +1,173 @@
 /* ==========================================
-   Lord of Mysteries System - Compact Layout
+   Lord of Mysteries - Efficient Layout
    ========================================== */
 
-/* Global Styles */
+/* Global */
 .lord-of-mysteries {
   font-family: "Signika", sans-serif;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .lord-of-mysteries .window-content {
   background: #f5f5f0;
-  color: #191813;
   padding: 0;
   overflow: hidden;
 }
 
 .lord-of-mysteries form {
   height: 100%;
+}
+
+/* Main Container - 3 Column Layout */
+.lord-of-mysteries .sheet-main-container {
+  display: flex;
+  height: 100%;
+  gap: 8px;
+  padding: 8px;
+  overflow: hidden;
+}
+
+/* ========== LEFT COLUMN: Portrait & Info ========== */
+.lord-of-mysteries .portrait-section {
+  width: 180px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  gap: 6px;
 }
 
-/* Sheet Header - Compact */
-.lord-of-mysteries .sheet-header {
-  background: linear-gradient(to bottom, #8b4513, #6b3410);
-  padding: 8px;
-  border-bottom: 2px solid #4a2810;
-  flex-shrink: 0;
-}
-
-.lord-of-mysteries .header-top {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
+.lord-of-mysteries .portrait-wrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 2px solid #8b4513;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ddd;
+  cursor: pointer;
 }
 
 .lord-of-mysteries .profile-img {
-  width: 80px;
-  height: 80px;
-  border: 2px solid #4a2810;
-  border-radius: 4px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  cursor: pointer;
-  flex-shrink: 0;
+  display: block;
 }
 
-.lord-of-mysteries .header-info {
-  flex: 1;
+.lord-of-mysteries .profile-img:hover {
+  opacity: 0.9;
+}
+
+.lord-of-mysteries .basic-info {
   display: flex;
   flex-direction: column;
+  gap: 3px;
+  overflow-y: auto;
+}
+
+.lord-of-mysteries .info-row {
+  display: flex;
+  align-items: center;
   gap: 4px;
 }
 
-.lord-of-mysteries .header-row {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.lord-of-mysteries .form-group.compact {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 100px;
-}
-
-.lord-of-mysteries .form-group.compact.small {
-  min-width: 60px;
-  flex: 0 0 auto;
-}
-
-.lord-of-mysteries .form-group.compact label {
+.lord-of-mysteries .info-row label {
+  width: 50px;
   font-size: 10px;
   font-weight: bold;
-  color: #fff;
-  margin-bottom: 2px;
-}
-
-.lord-of-mysteries .form-group.compact input,
-.lord-of-mysteries .form-group.compact select {
-  height: 22px;
-  padding: 2px 4px;
-  border: 1px solid #4a2810;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.95);
-  font-size: 11px;
-}
-
-/* Stats Bar - Compact */
-.lord-of-mysteries .stats-bar-compact {
-  background: #e8e8dc;
-  border-bottom: 2px solid #8b4513;
-  padding: 6px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+  color: #8b4513;
   flex-shrink: 0;
 }
 
-.lord-of-mysteries .stat-group {
-  display: flex;
-  gap: 8px;
-  align-items: center;
+.lord-of-mysteries .info-row input,
+.lord-of-mysteries .info-row select {
+  flex: 1;
+  height: 20px;
+  padding: 2px 4px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 10px;
+  background: white;
 }
 
-.lord-of-mysteries .stat-group.actions-group {
-  display: flex;
-  gap: 4px;
-}
-
-.lord-of-mysteries .stat-item {
+/* ========== CENTER COLUMN: Attributes, Stats, Items ========== */
+.lord-of-mysteries .center-section {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 4px 6px;
+  gap: 6px;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+.lord-of-mysteries .block-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #8b4513;
+  background: rgba(139, 69, 19, 0.1);
+  padding: 4px 8px;
+  margin: 0;
+  border-left: 4px solid #8b4513;
+}
+
+/* Attributes Block */
+.lord-of-mysteries .attributes-block {
   background: white;
-  border: 1px solid #8b4513;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.lord-of-mysteries .attributes-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.lord-of-mysteries .attr-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 4px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
   border-radius: 3px;
 }
 
-.lord-of-mysteries .stat-item.resource-stat {
-  min-width: 100px;
-}
-
-.lord-of-mysteries .stat-item.single-stat {
-  min-width: 70px;
-}
-
-.lord-of-mysteries .stat-item label {
-  font-size: 9px;
+.lord-of-mysteries .attr-label {
+  font-size: 10px;
   font-weight: bold;
   color: #8b4513;
-  margin-bottom: 2px;
+  text-align: center;
 }
 
-.lord-of-mysteries .stat-values {
+.lord-of-mysteries .attr-inputs {
   display: flex;
-  align-items: center;
-  gap: 2px;
+  gap: 3px;
+  justify-content: center;
 }
 
-.lord-of-mysteries .stat-values input {
-  width: 35px;
+.lord-of-mysteries .attr-inputs input {
+  width: 32px;
   height: 22px;
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 2px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
 }
 
-.lord-of-mysteries .stat-values span {
-  font-weight: bold;
-  color: #8b4513;
+.lord-of-mysteries .attr-inputs .attr-initial {
+  background: #ffe8cc;
 }
 
-.lord-of-mysteries .stat-display {
-  font-size: 16px;
-  font-weight: bold;
-  color: #191813;
+.lord-of-mysteries .attr-inputs .attr-current {
+  background: white;
 }
 
-.lord-of-mysteries .mini-btn {
-  margin-top: 2px;
-  padding: 2px 8px;
+.lord-of-mysteries .attr-roll-btn {
+  width: 100%;
+  padding: 3px;
   background: #8b4513;
   color: white;
   border: none;
@@ -173,12 +176,105 @@
   font-size: 10px;
 }
 
-.lord-of-mysteries .mini-btn:hover {
+.lord-of-mysteries .attr-roll-btn:hover {
   background: #6b3410;
 }
 
-.lord-of-mysteries .action-btn {
-  padding: 6px 12px;
+/* Stats Block */
+.lord-of-mysteries .stats-block {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.lord-of-mysteries .stat-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.lord-of-mysteries .stat-row:first-of-type {
+  margin-top: 6px;
+}
+
+.lord-of-mysteries .stat-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 4px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.lord-of-mysteries .stat-cell label {
+  font-size: 9px;
+  font-weight: bold;
+  color: #8b4513;
+}
+
+.lord-of-mysteries .resource-inputs {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.lord-of-mysteries .resource-inputs input {
+  width: 30px;
+  height: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.lord-of-mysteries .resource-inputs .current {
+  background: #fff0f0;
+}
+
+.lord-of-mysteries .resource-inputs .max {
+  background: white;
+}
+
+.lord-of-mysteries .resource-inputs span {
+  font-weight: bold;
+  color: #8b4513;
+}
+
+.lord-of-mysteries .stat-value {
+  font-size: 14px;
+  font-weight: bold;
+  color: #191813;
+}
+
+.lord-of-mysteries .sanity-roll-btn {
+  margin-top: 2px;
+  padding: 2px 6px;
+  background: #8b4513;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 9px;
+}
+
+.lord-of-mysteries .sanity-roll-btn:hover {
+  background: #6b3410;
+}
+
+.lord-of-mysteries .action-buttons {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.lord-of-mysteries .action-buttons button {
+  flex: 1;
+  padding: 6px;
   background: #2c5f2d;
   color: white;
   border: none;
@@ -186,287 +282,109 @@
   cursor: pointer;
   font-size: 11px;
   font-weight: bold;
-  white-space: nowrap;
 }
 
-.lord-of-mysteries .action-btn:hover {
+.lord-of-mysteries .action-buttons button:hover {
   background: #1f4620;
 }
 
-/* Main Content - 2 Columns No Scroll */
-.lord-of-mysteries .sheet-content {
-  flex: 1;
+/* Items & Abilities Block */
+.lord-of-mysteries .items-abilities-block {
   display: flex;
-  gap: 8px;
-  padding: 8px;
-  overflow: hidden;
-  min-height: 0;
-}
-
-.lord-of-mysteries .left-column {
-  flex: 1.5;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  overflow-y: auto;
-  min-height: 0;
-}
-
-.lord-of-mysteries .right-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  overflow-y: auto;
-  min-height: 0;
-}
-
-/* Section Headers */
-.lord-of-mysteries .section-header {
-  font-size: 13px;
-  font-weight: bold;
-  color: #8b4513;
-  border-bottom: 2px solid #8b4513;
-  padding: 4px 6px;
-  margin: 0 0 6px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(139, 69, 19, 0.1);
-}
-
-.lord-of-mysteries .mini-add {
-  padding: 2px 8px;
-  background: #8b4513;
-  color: white;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-  font-size: 10px;
-}
-
-.lord-of-mysteries .mini-add:hover {
-  background: #6b3410;
-}
-
-/* Attributes Compact */
-.lord-of-mysteries .attributes-compact {
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 6px;
-}
-
-.lord-of-mysteries .attributes-grid-compact {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 6px;
 }
 
-.lord-of-mysteries .attribute-compact {
-  background: #f9f9f9;
+.lord-of-mysteries .items-section,
+.lord-of-mysteries .abilities-section {
+  flex: 1;
+  background: white;
   border: 1px solid #ddd;
-  border-radius: 3px;
-  padding: 4px;
-}
-
-.lord-of-mysteries .attr-header {
+  border-radius: 4px;
+  padding: 6px;
+  min-height: 150px;
+  max-height: 200px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4px;
+  flex-direction: column;
 }
 
-.lord-of-mysteries .attr-header label {
+.lord-of-mysteries .sub-title {
   font-size: 11px;
   font-weight: bold;
   color: #8b4513;
+  margin: 0 0 6px 0;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.lord-of-mysteries .mini-roll {
+.lord-of-mysteries .add-btn {
   padding: 2px 6px;
   background: #8b4513;
   color: white;
   border: none;
   border-radius: 2px;
   cursor: pointer;
-  font-size: 9px;
+  font-size: 10px;
 }
 
-.lord-of-mysteries .mini-roll:hover {
+.lord-of-mysteries .add-btn:hover {
   background: #6b3410;
 }
 
-.lord-of-mysteries .attr-values {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  justify-content: center;
-}
-
-.lord-of-mysteries .attr-values input {
-  width: 35px;
-  height: 24px;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.lord-of-mysteries .attr-values .sep {
-  font-weight: bold;
-  color: #8b4513;
-}
-
-/* Skills Compact */
-.lord-of-mysteries .skills-compact {
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 6px;
+.lord-of-mysteries .items-list,
+.lord-of-mysteries .abilities-list {
   flex: 1;
   overflow-y: auto;
-  min-height: 0;
-}
-
-.lord-of-mysteries .skill-category {
-  margin-bottom: 8px;
-}
-
-.lord-of-mysteries .category-title {
-  font-size: 11px;
-  font-weight: bold;
-  color: #8b4513;
-  background: rgba(139, 69, 19, 0.1);
-  padding: 3px 6px;
-  margin: 0 0 4px 0;
-  border-left: 3px solid #8b4513;
-}
-
-.lord-of-mysteries .skill-list-compact {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.lord-of-mysteries .skill-compact {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 4px;
-  background: #f9f9f9;
-  border: 1px solid #e0e0e0;
-  border-radius: 2px;
-}
-
-.lord-of-mysteries .skill-compact:hover {
-  background: #f0f0f0;
-}
-
-.lord-of-mysteries .skill-name-box {
-  flex: 1;
-  min-width: 0;
-}
-
-.lord-of-mysteries .skill-label {
-  font-size: 11px;
-  font-weight: 500;
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.lord-of-mysteries .skill-custom-input {
-  width: 100%;
-  height: 20px;
-  padding: 2px 4px;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  font-size: 10px;
-}
-
-.lord-of-mysteries .skill-select {
-  width: 90px;
-  height: 22px;
-  padding: 2px;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  font-size: 10px;
-  background: white;
-}
-
-.lord-of-mysteries .skill-bonus-display {
-  width: 30px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 11px;
-  color: #8b4513;
-}
-
-/* Items & Abilities Compact */
-.lord-of-mysteries .items-compact,
-.lord-of-mysteries .abilities-compact {
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 6px;
-}
-
-.lord-of-mysteries .items-list-compact,
-.lord-of-mysteries .abilities-list-compact {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.lord-of-mysteries .item-row,
-.lord-of-mysteries .ability-row {
+.lord-of-mysteries .item-entry,
+.lord-of-mysteries .ability-entry {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 6px;
+  padding: 3px 6px;
   background: #f9f9f9;
   border: 1px solid #e0e0e0;
   border-radius: 2px;
 }
 
-.lord-of-mysteries .item-row:hover,
-.lord-of-mysteries .ability-row:hover {
+.lord-of-mysteries .item-entry:hover,
+.lord-of-mysteries .ability-entry:hover {
   background: #f0f0f0;
 }
 
 .lord-of-mysteries .item-name,
 .lord-of-mysteries .ability-name {
   flex: 1;
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.lord-of-mysteries .item-size-label {
-  font-size: 10px;
+.lord-of-mysteries .item-size {
+  font-size: 9px;
   color: #666;
-  white-space: nowrap;
 }
 
 .lord-of-mysteries .ability-cost {
   font-size: 10px;
   font-weight: bold;
   color: #8b4513;
-  min-width: 30px;
-  text-align: center;
   background: rgba(139, 69, 19, 0.1);
   padding: 2px 6px;
   border-radius: 2px;
+  min-width: 25px;
+  text-align: center;
 }
 
-.lord-of-mysteries .item-controls-inline {
+.lord-of-mysteries .item-actions,
+.lord-of-mysteries .ability-actions {
   display: flex;
   gap: 4px;
 }
@@ -474,152 +392,126 @@
 .lord-of-mysteries .item-control {
   cursor: pointer;
   color: #8b4513;
-  font-size: 12px;
-  padding: 2px;
+  font-size: 11px;
 }
 
 .lord-of-mysteries .item-control:hover {
   color: #6b3410;
 }
 
-/* Actions Sheet */
-.lord-of-mysteries.actions-sheet {
-  background: #f5f5f0;
-}
-
-.lord-of-mysteries .actions-header {
-  background: linear-gradient(to bottom, #2c5f2d, #1f4620);
-  padding: 12px;
-  border-bottom: 2px solid #1f4620;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.lord-of-mysteries .actions-header h2 {
-  color: white;
-  margin: 0;
-  font-size: 16px;
-}
-
-.lord-of-mysteries .actions-header .item-create {
-  padding: 6px 12px;
+/* ========== RIGHT COLUMN: Skills ========== */
+.lord-of-mysteries .skills-section {
+  width: 550px;
+  flex-shrink: 0;
   background: white;
-  color: #2c5f2d;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.lord-of-mysteries .actions-header .item-create:hover {
-  background: #f0f0f0;
-}
-
-.lord-of-mysteries .actions-body {
-  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px;
   overflow-y: auto;
 }
 
-.lord-of-mysteries .actions-list {
+.lord-of-mysteries .skills-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.lord-of-mysteries .skill-column {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 3px;
 }
 
-.lord-of-mysteries .action-item {
-  background: white;
-  border: 2px solid #8b4513;
-  border-radius: 6px;
-  padding: 10px;
-}
-
-.lord-of-mysteries .action-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.lord-of-mysteries .action-name {
-  flex: 1;
-  margin: 0;
-  font-size: 14px;
-  color: #191813;
-}
-
-.lord-of-mysteries .action-type-badge {
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 10px;
+.lord-of-mysteries .skill-attr-title {
+  font-size: 11px;
   font-weight: bold;
   color: white;
+  background: #8b4513;
+  padding: 3px 6px;
+  margin: 0 0 3px 0;
+  border-radius: 2px;
 }
 
-.lord-of-mysteries .action-type-badge.attack {
-  background: #c41e3a;
+.lord-of-mysteries .skill-row {
+  display: grid;
+  grid-template-columns: 80px 85px 30px 24px;
+  gap: 3px;
+  align-items: center;
+  padding: 2px 4px;
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  position: relative;
 }
 
-.lord-of-mysteries .action-type-badge.cast {
-  background: #6441a5;
+.lord-of-mysteries .skill-row:hover {
+  background: #f0f0f0;
 }
 
-.lord-of-mysteries .action-type-badge.move {
-  background: #2c5f2d;
+.lord-of-mysteries .skill-name {
+  font-size: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.lord-of-mysteries .action-type-badge.swift {
-  background: #ff8c00;
+.lord-of-mysteries .skill-level {
+  height: 20px;
+  padding: 1px 2px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 9px;
+  background: white;
 }
 
-.lord-of-mysteries .action-type-badge.free {
-  background: #4682b4;
+.lord-of-mysteries .skill-bonus {
+  font-size: 11px;
+  font-weight: bold;
+  color: #8b4513;
+  text-align: center;
 }
 
-.lord-of-mysteries .action-controls {
-  display: flex;
-  gap: 6px;
-}
-
-.lord-of-mysteries .action-details {
-  font-size: 12px;
-  color: #333;
-}
-
-.lord-of-mysteries .action-description {
-  margin: 0 0 6px 0;
-  line-height: 1.4;
-}
-
-.lord-of-mysteries .action-check {
+.lord-of-mysteries .skill-roll {
+  padding: 3px;
+  background: #8b4513;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 9px;
+  width: 24px;
+  height: 20px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 8px;
-  background: rgba(139, 69, 19, 0.1);
-  border-radius: 3px;
-  font-size: 11px;
-  font-weight: 500;
-  color: #8b4513;
+  justify-content: center;
 }
 
-.lord-of-mysteries .empty-state {
-  text-align: center;
-  padding: 40px 20px;
-  color: #999;
+.lord-of-mysteries .skill-roll:hover {
+  background: #6b3410;
 }
 
-.lord-of-mysteries .empty-state p {
-  margin: 8px 0;
+.lord-of-mysteries .skill-custom-name {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 2px;
+  padding: 2px 4px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 9px;
+  background: #fffacd;
+  z-index: 10;
 }
 
-.lord-of-mysteries .empty-state .hint {
-  font-size: 11px;
-  color: #bbb;
+/* Rollable */
+.lord-of-mysteries .rollable:hover {
+  box-shadow: 0 0 5px rgba(139, 69, 19, 0.5);
 }
 
-/* Scrollbar Styling */
+/* Scrollbar */
 .lord-of-mysteries ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -638,6 +530,112 @@
   background: #6b3410;
 }
 
+/* Actions Sheet */
+.lord-of-mysteries.actions-sheet .actions-header {
+  background: linear-gradient(to bottom, #2c5f2d, #1f4620);
+  padding: 12px;
+  border-bottom: 2px solid #1f4620;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lord-of-mysteries.actions-sheet .actions-header h2 {
+  color: white;
+  margin: 0;
+  font-size: 16px;
+}
+
+.lord-of-mysteries.actions-sheet .actions-header .item-create {
+  padding: 6px 12px;
+  background: white;
+  color: #2c5f2d;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.lord-of-mysteries.actions-sheet .actions-body {
+  padding: 12px;
+  overflow-y: auto;
+}
+
+.lord-of-mysteries.actions-sheet .actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lord-of-mysteries.actions-sheet .action-item {
+  background: white;
+  border: 2px solid #8b4513;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.lord-of-mysteries.actions-sheet .action-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.lord-of-mysteries.actions-sheet .action-name {
+  flex: 1;
+  margin: 0;
+  font-size: 14px;
+  color: #191813;
+}
+
+.lord-of-mysteries.actions-sheet .action-type-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+.lord-of-mysteries.actions-sheet .action-type-badge.attack { background: #c41e3a; }
+.lord-of-mysteries.actions-sheet .action-type-badge.cast { background: #6441a5; }
+.lord-of-mysteries.actions-sheet .action-type-badge.move { background: #2c5f2d; }
+.lord-of-mysteries.actions-sheet .action-type-badge.swift { background: #ff8c00; }
+.lord-of-mysteries.actions-sheet .action-type-badge.free { background: #4682b4; }
+
+.lord-of-mysteries.actions-sheet .action-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.lord-of-mysteries.actions-sheet .action-details {
+  font-size: 12px;
+  color: #333;
+}
+
+.lord-of-mysteries.actions-sheet .action-description {
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+}
+
+.lord-of-mysteries.actions-sheet .action-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: rgba(139, 69, 19, 0.1);
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #8b4513;
+}
+
+.lord-of-mysteries.actions-sheet .empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+}
+
 /* Item Sheets */
 .lord-of-mysteries.sheet.item .sheet-header {
   background: linear-gradient(to bottom, #8b4513, #6b3410);
@@ -651,7 +649,9 @@
 .lord-of-mysteries.sheet.item .profile-img {
   width: 80px;
   height: 80px;
-  flex-shrink: 0;
+  border: 2px solid #4a2810;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .lord-of-mysteries.sheet.item .header-fields {
@@ -682,6 +682,7 @@
   color: #8b4513;
   margin-bottom: 4px;
   display: block;
+  font-size: 12px;
 }
 
 .lord-of-mysteries.sheet.item .form-group input,

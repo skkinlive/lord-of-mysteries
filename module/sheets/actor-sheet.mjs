@@ -10,8 +10,8 @@ export class LordOfMysteriesActorSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["lord-of-mysteries", "sheet", "actor"],
-      width: 850,
-      height: 750,
+      width: 920,
+      height: 720,
       tabs: []
     });
   }
@@ -129,26 +129,28 @@ export class LordOfMysteriesActorSheet extends ActorSheet {
     html.find('.initiative-roll').click(this._onInitiativeRoll.bind(this));
 
     // 아이템 생성
-    html.find('.item-create').click(this._onItemCreate.bind(this));
+    html.find('.item-create, .add-btn').click(this._onItemCreate.bind(this));
 
     // 아이템 편집
     html.find('.item-edit').click(ev => {
-      const li = $(ev.currentTarget).parents(".item");
+      const li = $(ev.currentTarget).closest("[data-item-id]");
       const item = this.actor.items.get(li.data("itemId"));
-      item.sheet.render(true);
+      if (item) item.sheet.render(true);
     });
 
     // 아이템 삭제
     html.find('.item-delete').click(ev => {
-      const li = $(ev.currentTarget).parents(".item");
+      const li = $(ev.currentTarget).closest("[data-item-id]");
       const item = this.actor.items.get(li.data("itemId"));
-      item.delete();
-      li.slideUp(200, () => this.render(false));
+      if (item) {
+        item.delete();
+        li.slideUp(200, () => this.render(false));
+      }
     });
 
     // 아이템 사용/굴림
     html.find('.item-roll').click(ev => {
-      const li = $(ev.currentTarget).parents(".item");
+      const li = $(ev.currentTarget).closest("[data-item-id]");
       const item = this.actor.items.get(li.data("itemId"));
       if (item) item.roll();
     });
@@ -185,7 +187,11 @@ export class LordOfMysteriesActorSheet extends ActorSheet {
     const attributeKey = element.dataset.attribute;
     const attributeName = element.dataset.label;
 
-    await this.actor.rollAttribute(attributeKey, attributeName);
+    // Alt 키 = 유리점, Ctrl 키 = 불리점
+    const advantage = event.altKey;
+    const disadvantage = event.ctrlKey;
+
+    await this.actor.rollAttribute(attributeKey, attributeName, advantage, disadvantage);
   }
 
   /**
@@ -198,7 +204,11 @@ export class LordOfMysteriesActorSheet extends ActorSheet {
     const skillKey = element.dataset.skill;
     const skillName = element.dataset.label;
 
-    await this.actor.rollSkill(attribute, skillKey, skillName);
+    // Alt 키 = 유리점, Ctrl 키 = 불리점
+    const advantage = event.altKey;
+    const disadvantage = event.ctrlKey;
+
+    await this.actor.rollSkill(attribute, skillKey, skillName, advantage, disadvantage);
   }
 
   /**

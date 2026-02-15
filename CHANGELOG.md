@@ -5,6 +5,24 @@ All notable changes to the Lord of Mysteries TRPG System will be documented in t
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-02-15
+
+### Added
+- 유리점/불리점 시스템 (Alt 키: 유리점, Ctrl 키: 불리점)
+- 포트레이트 이미지 업로드 기능
+- 기능 이름 명확한 표시 (등반, 투척 등)
+
+### Changed
+- 캐릭터 시트 레이아웃 완전 재설계 (3단 레이아웃)
+- 포트레이트를 좌측 최상단으로 이동
+- 탐사자 정보를 세로 배치로 변경하여 공간 효율 개선
+- 기능을 속성별 세로 배치로 변경
+- 시트 크기 최적화 (920x720)
+
+### Fixed
+- 물품/초월 능력 편집 버튼이 작동하지 않던 문제 수정
+- 아이템 삭제 기능 정상화
+
 ## [1.0.0] - 2025-02-15
 
 ### Added
@@ -30,4 +48,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 다양한 피해 유형 정의 (물리, 저주, 화염, 냉기, 신성, 번개, 독소)
 - 14가지 상태 이상 정의
 
+[1.1.0]: https://github.com/skkinlive/lord-of-mysteries/releases/tag/v1.1.0
 [1.0.0]: https://github.com/skkinlive/lord-of-mysteries/releases/tag/v1.0.0
