@@ -30,4 +30,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 다양한 피해 유형 정의 (물리, 저주, 화염, 냉기, 신성, 번개, 독소)
 - 14가지 상태 이상 정의
 
-[1.0.0]: https://github.com/YOUR-USERNAME/lord-of-mysteries/releases/tag/v1.0.0
+[1.0.0]: https://github.com/skkinlive/lord-of-mysteries/releases/tag/v1.0.0
