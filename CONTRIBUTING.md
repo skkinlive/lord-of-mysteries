@@ -8,7 +8,7 @@ Lord of Mysteries TRPG 시스템에 기여해주셔서 감사합니다!
 
 버그를 발견하셨다면:
 
-1. [Issues](https://github.com/YOUR-USERNAME/lord-of-mysteries/issues)에서 이미 보고된 버그인지 확인
+1. [Issues](https://github.com/skkinlive/lord-of-mysteries/issues)에서 이미 보고된 버그인지 확인
 2. 새 Issue 생성
 3. 다음 정보 포함:
    - 버그 설명
@@ -23,7 +23,7 @@ Lord of Mysteries TRPG 시스템에 기여해주셔서 감사합니다!
 
 새로운 기능을 제안하고 싶으시다면:
 
-1. [Issues](https://github.com/YOUR-USERNAME/lord-of-mysteries/issues)에서 유사한 제안이 있는지 확인
+1. [Issues](https://github.com/skkinlive/lord-of-mysteries/issues)에서 유사한 제안이 있는지 확인
 2. 새 Issue 생성 (제목에 [Feature Request] 추가)
 3. 다음 정보 포함:
    - 기능 설명
@@ -70,4 +70,4 @@ Pull Request 전에 다음을 확인해주세요:
 
 ## 질문
 
-궁금한 점이 있다면 [Issues](https://github.com/YOUR-USERNAME/lord-of-mysteries/issues)에서 질문해주세요!
+궁금한 점이 있다면 [Issues](https://github.com/skkinlive/lord-of-mysteries/issues)에서 질문해주세요!
