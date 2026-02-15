@@ -164,7 +164,9 @@
     },
     "ability": {
       "description": "",
-      "cost": 0
+      "cost": 0,
+      "checkType": "none",
+      "checkTarget": ""
     }
   }
 }

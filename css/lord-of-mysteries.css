@@ -345,9 +345,9 @@
 .lord-of-mysteries .item-entry,
 .lord-of-mysteries .ability-entry {
   display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 3px 6px;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
   background: #f9f9f9;
   border: 1px solid #e0e0e0;
   border-radius: 2px;
@@ -358,10 +358,18 @@
   background: #f0f0f0;
 }
 
+.lord-of-mysteries .ability-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
 .lord-of-mysteries .item-name,
 .lord-of-mysteries .ability-name {
   flex: 1;
-  font-size: 10px;
+  font-size: 11px;
+  font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -370,6 +378,16 @@
 .lord-of-mysteries .item-size {
   font-size: 9px;
   color: #666;
+}
+
+.lord-of-mysteries .ability-cost-label {
+  font-size: 10px;
+  color: #8b4513;
+  font-weight: bold;
+  background: rgba(139, 69, 19, 0.1);
+  padding: 2px 6px;
+  border-radius: 2px;
+  white-space: nowrap;
 }
 
 .lord-of-mysteries .ability-cost {
@@ -423,6 +441,14 @@
   gap: 3px;
 }
 
+.lord-of-mysteries .skill-scroll-area {
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .lord-of-mysteries .skill-attr-title {
   font-size: 11px;
   font-weight: bold;
@@ -434,11 +460,10 @@
 }
 
 .lord-of-mysteries .skill-row {
-  display: grid;
-  grid-template-columns: 80px 85px 30px 24px;
-  gap: 3px;
-  align-items: center;
-  padding: 2px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 3px 4px;
   background: #f9f9f9;
   border: 1px solid #e0e0e0;
   border-radius: 2px;
@@ -449,16 +474,25 @@
   background: #f0f0f0;
 }
 
-.lord-of-mysteries .skill-name {
-  font-size: 10px;
-  font-weight: 500;
+/* 메인 라인: 기능명, 등급, 보너스, 버튼 */
+.lord-of-mysteries .skill-row-main {
+  display: grid;
+  grid-template-columns: 1fr 85px 30px 24px;
+  gap: 3px;
+  align-items: center;
+}
+
+.lord-of-mysteries .skill-name-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #000;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.lord-of-mysteries .skill-level {
-  height: 20px;
+.lord-of-mysteries .skill-level-select {
+  height: 22px;
   padding: 1px 2px;
   border: 1px solid #ccc;
   border-radius: 2px;
@@ -466,14 +500,14 @@
   background: white;
 }
 
-.lord-of-mysteries .skill-bonus {
-  font-size: 11px;
+.lord-of-mysteries .skill-bonus-value {
+  font-size: 12px;
   font-weight: bold;
   color: #8b4513;
   text-align: center;
 }
 
-.lord-of-mysteries .skill-roll {
+.lord-of-mysteries .skill-roll-btn {
   padding: 3px;
   background: #8b4513;
   color: white;
@@ -482,28 +516,25 @@
   cursor: pointer;
   font-size: 9px;
   width: 24px;
-  height: 20px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.lord-of-mysteries .skill-roll:hover {
+.lord-of-mysteries .skill-roll-btn:hover {
   background: #6b3410;
 }
 
-.lord-of-mysteries .skill-custom-name {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  margin-top: 2px;
+/* 서브 라인: 커스텀 이름 입력 */
+.lord-of-mysteries .skill-subname-input {
+  width: 100%;
   padding: 2px 4px;
   border: 1px solid #ccc;
   border-radius: 2px;
   font-size: 9px;
   background: #fffacd;
-  z-index: 10;
+  margin-top: 2px;
 }
 
 /* Rollable */
