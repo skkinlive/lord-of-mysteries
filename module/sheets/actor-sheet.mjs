@@ -10,7 +10,7 @@ export class LordOfMysteriesActorSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["lord-of-mysteries", "sheet", "actor"],
-      width: 920,
+      width: 960,
       height: 720,
       tabs: []
     });
@@ -81,6 +81,9 @@ export class LordOfMysteriesActorSheet extends ActorSheet {
       'luck': '행운',
       'education': '교육'
     };
+
+    // 기능 이름 매핑
+    context.skillNames = this._getSkillNames();
 
     // 기능 이름 매핑
     context.skillNames = this._getSkillNames();
