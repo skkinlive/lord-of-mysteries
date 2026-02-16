@@ -2,7 +2,7 @@
   "id": "lord-of-mysteries",
   "title": "Lord of Mysteries",
   "description": "Lord of Mysteries TRPG 시스템 - 서열과 속성 기반 판정 시스템",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "compatibility": {
     "minimum": "11",
     "verified": "12"

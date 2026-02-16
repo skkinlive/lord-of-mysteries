@@ -159,6 +159,7 @@
               <span class="item-name">{{item.name}}</span>
               <span class="item-size">{{lookup ../itemSizes item.system.size}}</span>
               <div class="item-actions">
+                <a class="item-control item-use" title="사용"><i class="fas fa-hand-paper"></i></a>
                 <a class="item-control item-edit" title="편집"><i class="fas fa-edit"></i></a>
                 <a class="item-control item-delete" title="삭제"><i class="fas fa-trash"></i></a>
               </div>
@@ -175,10 +176,8 @@
           <div class="abilities-list">
             {{#each abilities as |item id|}}
             <div class="ability-entry" data-item-id="{{item._id}}">
-              <div class="ability-info">
-                <span class="ability-name">{{item.name}}</span>
-                <span class="ability-cost-label">비용: {{item.system.cost}}</span>
-              </div>
+              <span class="ability-name">{{item.name}}</span>
+              <span class="ability-cost">{{item.system.cost}}</span>
               <div class="ability-actions">
                 <a class="item-control item-roll" title="사용"><i class="fas fa-hand-sparkles"></i></a>
                 <a class="item-control item-edit" title="편집"><i class="fas fa-edit"></i></a>
@@ -201,7 +200,21 @@
           <h4 class="skill-attr-title">힘</h4>
           {{#each system.skills.strength as |skill skillKey|}}
           <div class="skill-row">
-            <span class="skill-name-label">{{lookup ../../skillNames.strength.[skillKey]}}</span>
+            {{#if (eq skillKey "melee1")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.strength.{{skillKey}}.name" type="text" value="" placeholder="격투 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "melee2")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.strength.{{skillKey}}.name" type="text" value="" placeholder="격투 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else}}
+              <span class="skill-name-text">{{lookup ../../skillNames.strength.[skillKey]}}</span>
+            {{/if}}
             <select name="system.skills.strength.{{skillKey}}.level" class="skill-level-select">
               {{#each ../../skillLevels as |label level|}}
               <option value="{{level}}" {{#if (eq ../skill.level level)}}selected{{/if}}>{{label}}</option>
@@ -211,11 +224,6 @@
             <button type="button" class="skill-roll-btn rollable" data-attribute="strength" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../../skillNames.strength.[skillKey]}}{{/if}}">
               <i class="fas fa-dice-d20"></i>
             </button>
-            {{#if (eq skillKey "melee1")}}
-            <input name="system.skills.strength.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="격투 종류" class="skill-subname-input"/>
-            {{else if (eq skillKey "melee2")}}
-            <input name="system.skills.strength.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="격투 종류" class="skill-subname-input"/>
-            {{/if}}
           </div>
           {{/each}}
         </div>
@@ -225,7 +233,27 @@
           <h4 class="skill-attr-title">민첩</h4>
           {{#each system.skills.dexterity as |skill skillKey|}}
           <div class="skill-row">
-            <span class="skill-name-label">{{lookup ../../skillNames.dexterity.[skillKey]}}</span>
+            {{#if (eq skillKey "ranged1")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.dexterity.{{skillKey}}.name" type="text" value="" placeholder="사격 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "ranged2")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.dexterity.{{skillKey}}.name" type="text" value="" placeholder="사격 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "ranged3")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.dexterity.{{skillKey}}.name" type="text" value="" placeholder="사격 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else}}
+              <span class="skill-name-text">{{lookup ../../skillNames.dexterity.[skillKey]}}</span>
+            {{/if}}
             <select name="system.skills.dexterity.{{skillKey}}.level" class="skill-level-select">
               {{#each ../../skillLevels as |label level|}}
               <option value="{{level}}" {{#if (eq ../skill.level level)}}selected{{/if}}>{{label}}</option>
@@ -235,13 +263,6 @@
             <button type="button" class="skill-roll-btn rollable" data-attribute="dexterity" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../../skillNames.dexterity.[skillKey]}}{{/if}}">
               <i class="fas fa-dice-d20"></i>
             </button>
-            {{#if (eq skillKey "ranged1")}}
-            <input name="system.skills.dexterity.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="사격 종류" class="skill-subname-input"/>
-            {{else if (eq skillKey "ranged2")}}
-            <input name="system.skills.dexterity.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="사격 종류" class="skill-subname-input"/>
-            {{else if (eq skillKey "ranged3")}}
-            <input name="system.skills.dexterity.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="사격 종류" class="skill-subname-input"/>
-            {{/if}}
           </div>
           {{/each}}
         </div>
@@ -249,10 +270,29 @@
         {{!-- 영감 --}}
         <div class="skill-column">
           <h4 class="skill-attr-title">영감</h4>
-          <div class="skill-scroll-area">
           {{#each system.skills.inspiration as |skill skillKey|}}
           <div class="skill-row">
-            <span class="skill-name-label">{{lookup ../../skillNames.inspiration.[skillKey]}}</span>
+            {{#if (eq skillKey "art1")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.inspiration.{{skillKey}}.name" type="text" value="" placeholder="예술 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "art2")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.inspiration.{{skillKey}}.name" type="text" value="" placeholder="예술 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "art3")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.inspiration.{{skillKey}}.name" type="text" value="" placeholder="예술 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else}}
+              <span class="skill-name-text">{{lookup ../../skillNames.inspiration.[skillKey]}}</span>
+            {{/if}}
             <select name="system.skills.inspiration.{{skillKey}}.level" class="skill-level-select">
               {{#each ../../skillLevels as |label level|}}
               <option value="{{level}}" {{#if (eq ../skill.level level)}}selected{{/if}}>{{label}}</option>
@@ -262,25 +302,102 @@
             <button type="button" class="skill-roll-btn rollable" data-attribute="inspiration" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../../skillNames.inspiration.[skillKey]}}{{/if}}">
               <i class="fas fa-dice-d20"></i>
             </button>
-            {{#if (eq skillKey "art1")}}
-            <input name="system.skills.inspiration.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="예술 종류" class="skill-subname-input"/>
-            {{else if (eq skillKey "art2")}}
-            <input name="system.skills.inspiration.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="예술 종류" class="skill-subname-input"/>
-            {{else if (eq skillKey "art3")}}
-            <input name="system.skills.inspiration.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="예술 종류" class="skill-subname-input"/>
-            {{/if}}
           </div>
           {{/each}}
-          </div>
         </div>
 
         {{!-- 교육 --}}
         <div class="skill-column">
           <h4 class="skill-attr-title">교육</h4>
-          <div class="skill-scroll-area">
           {{#each system.skills.education as |skill skillKey|}}
           <div class="skill-row">
-            <span class="skill-name-label">{{lookup ../../skillNames.education.[skillKey]}}</span>
+            {{#if (eq skillKey "scholarship1")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="학식 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "scholarship2")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="학식 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "scholarship3")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="학식 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "scholarship4")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="학식 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "scholarship5")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="학식 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "scholarship6")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="학식 (빈칸)" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "occultLanguage1")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="신비학 언어" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "occultLanguage2")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="신비학 언어" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "occultLanguage3")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="신비학 언어" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "occultLanguage4")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="신비학 언어" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "commonLanguage1")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="상용어" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "commonLanguage2")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="상용어" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "commonLanguage3")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="상용어" class="skill-name-input"/>
+              {{/if}}
+            {{else if (eq skillKey "commonLanguage4")}}
+              {{#if skill.name}}
+              <span class="skill-name-text">{{skill.name}}</span>
+              {{else}}
+              <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="상용어" class="skill-name-input"/>
+              {{/if}}
+            {{else}}
+              <span class="skill-name-text">{{lookup ../../skillNames.education.[skillKey]}}</span>
+            {{/if}}
             <select name="system.skills.education.{{skillKey}}.level" class="skill-level-select">
               {{#each ../../skillLevels as |label level|}}
               <option value="{{level}}" {{#if (eq ../skill.level level)}}selected{{/if}}>{{label}}</option>
@@ -290,38 +407,8 @@
             <button type="button" class="skill-roll-btn rollable" data-attribute="education" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../../skillNames.education.[skillKey]}}{{/if}}">
               <i class="fas fa-dice-d20"></i>
             </button>
-            {{#if (eq skillKey "scholarship1")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="학식 분야" class="skill-subname-input"/>
-            {{else if (eq skillKey "scholarship2")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="학식 분야" class="skill-subname-input"/>
-            {{else if (eq skillKey "scholarship3")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="학식 분야" class="skill-subname-input"/>
-            {{else if (eq skillKey "scholarship4")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="학식 분야" class="skill-subname-input"/>
-            {{else if (eq skillKey "scholarship5")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="학식 분야" class="skill-subname-input"/>
-            {{else if (eq skillKey "scholarship6")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="학식 분야" class="skill-subname-input"/>
-            {{else if (eq skillKey "occultLanguage1")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="언어명" class="skill-subname-input"/>
-            {{else if (eq skillKey "occultLanguage2")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="언어명" class="skill-subname-input"/>
-            {{else if (eq skillKey "occultLanguage3")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="언어명" class="skill-subname-input"/>
-            {{else if (eq skillKey "occultLanguage4")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="언어명" class="skill-subname-input"/>
-            {{else if (eq skillKey "commonLanguage1")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="언어명" class="skill-subname-input"/>
-            {{else if (eq skillKey "commonLanguage2")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="언어명" class="skill-subname-input"/>
-            {{else if (eq skillKey "commonLanguage3")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="언어명" class="skill-subname-input"/>
-            {{else if (eq skillKey "commonLanguage4")}}
-            <input name="system.skills.education.{{skillKey}}.name" type="text" value="{{skill.name}}" placeholder="언어명" class="skill-subname-input"/>
-            {{/if}}
           </div>
           {{/each}}
-          </div>
         </div>
 
         {{!-- 매력 --}}
@@ -329,7 +416,7 @@
           <h4 class="skill-attr-title">매력</h4>
           {{#each system.skills.charm as |skill skillKey|}}
           <div class="skill-row">
-            <span class="skill-name-label">{{lookup ../../skillNames.charm.[skillKey]}}</span>
+            <span class="skill-name-text">{{lookup ../../skillNames.charm.[skillKey]}}</span>
             <select name="system.skills.charm.{{skillKey}}.level" class="skill-level-select">
               {{#each ../../skillLevels as |label level|}}
               <option value="{{level}}" {{#if (eq ../skill.level level)}}selected{{/if}}>{{label}}</option>

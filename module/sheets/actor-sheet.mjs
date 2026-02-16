@@ -155,6 +155,13 @@ export class LordOfMysteriesActorSheet extends ActorSheet {
       if (item) item.roll();
     });
 
+    // 물품 사용 (이름과 설명 채팅 출력)
+    html.find('.item-use').click(ev => {
+      const li = $(ev.currentTarget).closest("[data-item-id]");
+      const item = this.actor.items.get(li.data("itemId"));
+      if (item) this._onItemUse(item);
+    });
+
     // Drag events for macros
     if (this.actor.isOwner) {
       let handler = ev => this._onDragStart(ev);
@@ -225,6 +232,23 @@ export class LordOfMysteriesActorSheet extends ActorSheet {
   async _onInitiativeRoll(event) {
     event.preventDefault();
     await this.actor.rollInitiative();
+  }
+
+  /**
+   * 물품 사용 - 이름과 설명 채팅 출력
+   */
+  _onItemUse(item) {
+    const speaker = ChatMessage.getSpeaker({ actor: this.actor });
+    const description = item.system.description || '(설명 없음)';
+    
+    ChatMessage.create({
+      speaker: speaker,
+      content: `<div class="item-use-card">
+        <h3><i class="fas fa-box"></i> ${item.name}</h3>
+        <p>${description}</p>
+      </div>`,
+      flags: { "lordofmysteries.itemId": item.id }
+    });
   }
 
   /**
