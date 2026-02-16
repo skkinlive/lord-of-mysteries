@@ -213,15 +213,15 @@
               <input name="system.skills.strength.{{skillKey}}.name" type="text" value="" placeholder="격투 (빈칸)" class="skill-name-input"/>
               {{/if}}
             {{else}}
-              <span class="skill-name-text">{{lookup ../../skillNames.strength.[skillKey]}}</span>
+              <span class="skill-name-text">{{lookup ../skillNames.strength skillKey}}</span>
             {{/if}}
             <select name="system.skills.strength.{{skillKey}}.level" class="skill-level-select">
-              {{#each ../../skillLevels as |label level|}}
+              {{#each ../skillLevels as |label level|}}
               <option value="{{level}}" {{#if (eq ../skill.level level)}}selected{{/if}}>{{label}}</option>
               {{/each}}
             </select>
             <span class="skill-bonus-value">{{skillBonus skill.level}}</span>
-            <button type="button" class="skill-roll-btn rollable" data-attribute="strength" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../../skillNames.strength.[skillKey]}}{{/if}}">
+            <button type="button" class="skill-roll-btn rollable" data-attribute="strength" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../skillNames.strength skillKey}}{{/if}}">
               <i class="fas fa-dice-d20"></i>
             </button>
           </div>
@@ -252,15 +252,15 @@
               <input name="system.skills.dexterity.{{skillKey}}.name" type="text" value="" placeholder="사격 (빈칸)" class="skill-name-input"/>
               {{/if}}
             {{else}}
-              <span class="skill-name-text">{{lookup ../../skillNames.dexterity.[skillKey]}}</span>
+              <span class="skill-name-text">{{lookup ../skillNames.dexterity skillKey}}</span>
             {{/if}}
             <select name="system.skills.dexterity.{{skillKey}}.level" class="skill-level-select">
-              {{#each ../../skillLevels as |label level|}}
+              {{#each ../skillLevels as |label level|}}
               <option value="{{level}}" {{#if (eq ../skill.level level)}}selected{{/if}}>{{label}}</option>
               {{/each}}
             </select>
             <span class="skill-bonus-value">{{skillBonus skill.level}}</span>
-            <button type="button" class="skill-roll-btn rollable" data-attribute="dexterity" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../../skillNames.dexterity.[skillKey]}}{{/if}}">
+            <button type="button" class="skill-roll-btn rollable" data-attribute="dexterity" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../skillNames.dexterity skillKey}}{{/if}}">
               <i class="fas fa-dice-d20"></i>
             </button>
           </div>
@@ -291,15 +291,15 @@
               <input name="system.skills.inspiration.{{skillKey}}.name" type="text" value="" placeholder="예술 (빈칸)" class="skill-name-input"/>
               {{/if}}
             {{else}}
-              <span class="skill-name-text">{{lookup ../../skillNames.inspiration.[skillKey]}}</span>
+              <span class="skill-name-text">{{lookup ../skillNames.inspiration skillKey}}</span>
             {{/if}}
             <select name="system.skills.inspiration.{{skillKey}}.level" class="skill-level-select">
-              {{#each ../../skillLevels as |label level|}}
+              {{#each ../skillLevels as |label level|}}
               <option value="{{level}}" {{#if (eq ../skill.level level)}}selected{{/if}}>{{label}}</option>
               {{/each}}
             </select>
             <span class="skill-bonus-value">{{skillBonus skill.level}}</span>
-            <button type="button" class="skill-roll-btn rollable" data-attribute="inspiration" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../../skillNames.inspiration.[skillKey]}}{{/if}}">
+            <button type="button" class="skill-roll-btn rollable" data-attribute="inspiration" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../skillNames.inspiration skillKey}}{{/if}}">
               <i class="fas fa-dice-d20"></i>
             </button>
           </div>
@@ -396,15 +396,15 @@
               <input name="system.skills.education.{{skillKey}}.name" type="text" value="" placeholder="상용어" class="skill-name-input"/>
               {{/if}}
             {{else}}
-              <span class="skill-name-text">{{lookup ../../skillNames.education.[skillKey]}}</span>
+              <span class="skill-name-text">{{lookup ../skillNames.education skillKey}}</span>
             {{/if}}
             <select name="system.skills.education.{{skillKey}}.level" class="skill-level-select">
-              {{#each ../../skillLevels as |label level|}}
+              {{#each ../skillLevels as |label level|}}
               <option value="{{level}}" {{#if (eq ../skill.level level)}}selected{{/if}}>{{label}}</option>
               {{/each}}
             </select>
             <span class="skill-bonus-value">{{skillBonus skill.level}}</span>
-            <button type="button" class="skill-roll-btn rollable" data-attribute="education" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../../skillNames.education.[skillKey]}}{{/if}}">
+            <button type="button" class="skill-roll-btn rollable" data-attribute="education" data-skill="{{skillKey}}" data-label="{{#if skill.name}}{{skill.name}}{{else}}{{lookup ../skillNames.education skillKey}}{{/if}}">
               <i class="fas fa-dice-d20"></i>
             </button>
           </div>
@@ -416,14 +416,14 @@
           <h4 class="skill-attr-title">매력</h4>
           {{#each system.skills.charm as |skill skillKey|}}
           <div class="skill-row">
-            <span class="skill-name-text">{{lookup ../../skillNames.charm.[skillKey]}}</span>
+            <span class="skill-name-text">{{lookup ../skillNames.charm skillKey}}</span>
             <select name="system.skills.charm.{{skillKey}}.level" class="skill-level-select">
-              {{#each ../../skillLevels as |label level|}}
+              {{#each ../skillLevels as |label level|}}
               <option value="{{level}}" {{#if (eq ../skill.level level)}}selected{{/if}}>{{label}}</option>
               {{/each}}
             </select>
             <span class="skill-bonus-value">{{skillBonus skill.level}}</span>
-            <button type="button" class="skill-roll-btn rollable" data-attribute="charm" data-skill="{{skillKey}}" data-label="{{lookup ../../skillNames.charm.[skillKey]}}">
+            <button type="button" class="skill-roll-btn rollable" data-attribute="charm" data-skill="{{skillKey}}" data-label="{{lookup ../skillNames.charm skillKey}}">
               <i class="fas fa-dice-d20"></i>
             </button>
           </div>
