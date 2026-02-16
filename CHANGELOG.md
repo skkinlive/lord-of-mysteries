@@ -5,6 +5,13 @@ All notable changes to the Lord of Mysteries TRPG System will be documented in t
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.3] - 2025-02-16
+
+### Fixed
+- 기능 레벨 선택 시 다른 기능들이 "훈련 안됨"으로 초기화되는 심각한 버그 수정
+- 선택한 레벨이 드롭다운에 제대로 표시되지 않던 문제 해결
+- Handlebars의 `{{#with}}` 블록을 사용하여 컨텍스트 격리
+
 ## [1.2.2] - 2025-02-16
 
 ### Fixed
@@ -78,6 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 다양한 피해 유형 정의 (물리, 저주, 화염, 냉기, 신성, 번개, 독소)
 - 14가지 상태 이상 정의
 
+[1.2.3]: https://github.com/skkinlive/lord-of-mysteries/releases/tag/v1.2.3
 [1.2.2]: https://github.com/skkinlive/lord-of-mysteries/releases/tag/v1.2.2
 [1.2.1]: https://github.com/skkinlive/lord-of-mysteries/releases/tag/v1.2.1
 [1.2.0]: https://github.com/skkinlive/lord-of-mysteries/releases/tag/v1.2.0
